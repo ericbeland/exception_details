@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eric Beland"]
   spec.email         = ["ebeland@gmail.com"]
   spec.description   = %q{Inspect variables captured at exception-time to get info about your exceptions}
-  spec.summary       = %q{TODO: Exception Details extends Exception to let you inspect variable values at exception-time for logging etc.}
-  spec.homepage      = ""
+  spec.summary       = %q{Exception Details extends Exception to let you inspect variable values at exception-time for logging etc.}
+  spec.homepage      = "https://github.com/ericbeland/exception_details"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

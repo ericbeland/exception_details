@@ -36,9 +36,9 @@ Features/benefits:
 		Exception:
 			can't convert nil into String
 		Variables:
-			<String>greeting = "hello"
-			<TypeError>e = #<TypeError: can't convert nil into String>
-			<NilClass>@name = nil
+			<String> greeting = "hello"
+			<TypeError> e = #<TypeError: can't convert nil into String>
+			<NilClass> @name = nil
 		Backtrace:
 			/Users/someguy/apps/exception_details/spec/exception_details_spec.rb:20:in `+'
 		/Users/someguy/apps/exception_details/spec/exception_details_spec.rb:20:in `block (3 levels) in <top (required)>'
@@ -48,9 +48,9 @@ Features/benefits:
 
 	e.inspect_variables ->
 
-		<String>greeting = "hello"
-		<TypeError>e = #<TypeError: can't convert nil into String>
-		<NilClass>@name = nil
+		<String> greeting = "hello"
+		<TypeError> e = #<TypeError: can't convert nil into String>
+		<NilClass> @name = nil
 
 Or access the variables in the binding yourself...
 

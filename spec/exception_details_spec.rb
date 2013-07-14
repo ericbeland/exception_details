@@ -56,7 +56,6 @@ describe "ExceptionDetails" do
         should_be_in_output = true
         "UP".downcase("", "")
       rescue Exception => e
-        p e.details
         e.binding_during_exception.should be_an_instance_of Binding
         e.inspect_variables.include?("should_be_in_output").should be_true
        end

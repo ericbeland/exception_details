@@ -4,13 +4,13 @@ Exception Details extends the Ruby Exception class to capture a binding
 at Exception-time. Exception Details provides convenience methods to inspect all the
 variables and values from that moment and adds .details to output an informative log string.
 
-Uses:
+Uses/Features:
 	- Get detail (variables/values) about your Exception circumstances ~without~ reproducing the problem first.
-	- Reduced need to add debug / logging code to find out what went wrong.
+	- Reduced need for debug/logging code to find out what went wrong.
 	- Minimize ambiguous errors (which variable was nil?).
 	- A single statement (Exception.details) gives a loggable string (stop repeating exception log string creation)
   - Get pry level debug knowledge from cron job errors and running system logs without being there.
-
+  - Pry type information with less overhead/dependencies--binding_of_caller is the only dependency.
 
 ## Installation
 
@@ -26,18 +26,18 @@ Require it:
 
 	require 'exception_details'
 
-## Usage
+## Example Usage
 
 	begin
 		greeting = 'hello'
 		@name = nil
-		p greeting + name
+		puts greeting + name
 	rescue Exception => e
 		puts e.details
 		puts e.inspect_variables
 	end
 
-	e.details gets you: ->
+#	e.details gets you: ->
 
 	Exception:
 		can't convert nil into String
@@ -51,10 +51,16 @@ Require it:
 	/Users/ebeland/.rvm/gems/ruby-1.9.3-p374/gems/rspec-core-2.14.3/lib/rspec/core/example.rb:114:in `instance_eval'
 	and so forth ...
 
-	e.inspect_variables is simply:
+#	e.inspect_variables gets you ->
+
 		<String>greeting = "hello"
 		<TypeError>e = #<TypeError: can't convert nil into String>
 		<NilClass>@name = nil
+
+# Or access the variables in the binding directly yourself...
+
+	e.binding_during_exception.eval("puts #{greeting}")
+
 
 
 ## Limitations

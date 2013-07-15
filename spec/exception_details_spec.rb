@@ -11,6 +11,7 @@ describe "ExceptionDetails" do
   end
 
   context ".details" do
+
     it "should provide exception details method with back trace" do
       @e.details.include?('.rb').should be_true
     end
@@ -52,7 +53,7 @@ describe "ExceptionDetails" do
 
     it "should be available on grandchild subclasses" do
       begin
-        # cause an arugument error
+        # cause an argument error
         should_be_in_output = true
         "UP".downcase("", "")
       rescue Exception => e
@@ -61,15 +62,16 @@ describe "ExceptionDetails" do
        end
     end
 
-    pending "Need to investigate why NameError won't capture a binding (any takers?)" do
-      it "should capture a binding for NameError" do
-        begin
-          reality_check = true
-          'hello' + made_up_variable
-        rescue Exception =>e
-          e.binding_during_exception.should be_an_instance_of Binding
-          e.inspect_variables.include?("reality_check").should be_true
-        end
+
+    it "should capture a binding for NameError" do
+    pending "Need to investigate why NameError won't capture a binding (any takers?)"
+      begin
+        reality_check = true
+        'hello' + made_up_variable
+      rescue Exception => e
+        p e.inspect
+        e.binding_during_exception.should be_an_instance_of Binding
+        e.inspect_variables.include?("reality_check").should be_true
       end
     end
 

@@ -19,8 +19,10 @@ module ExceptionDetails
 				variable_names = target_binding.eval(variable_scope.to_s)
 				variable_names.each do |vname|
 					value = target_binding.eval(vname.to_s)
-					variable_value_string = "\t<#{value.class}> #{vname} = #{value.inspect}"
-					variable_strings << variable_value_string
+					variable_value_string = "\t" + sprintf("%-35s = %s", "<#{value.class}> #{vname}", value.inspect)
+					unless value == self # don't list the exception itself ...
+						variable_strings << variable_value_string
+					end
 				end
 			end
 			variable_strings.sort

@@ -25,7 +25,7 @@ class Exception
 		inspect_results = inspect_variables(options)
 		parts = []
 		parts << (options[:colorize] ? red('Exception:') : 'Exception:')
-		parts << "\t" + message
+		parts << "\t" + "#{self.class.name}: #{message}"
 		parts << (options[:colorize] ? red('Variables:') : 'Variables:')
 		parts << inspect_results
 		parts << (options[:colorize] ? red('Backtrace:') : 'Backtrace:')

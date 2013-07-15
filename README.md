@@ -14,7 +14,7 @@ Features/benefits:
 
 	* A single statement method for a loggable string (avoid repeating exception log string creation)
 
-	* Get Pry like debug knowledge from cron job errors and running system logs without being there.
+	* Get Pry like debug knowledge from cron job errors and running systems from the log, without being there.
 
 	* Pry type information with less overhead/dependencies--binding_of_caller is the only dependency.
 
@@ -24,7 +24,7 @@ Features/benefits:
 	begin
 		greeting = 'hello'
 		@name = nil
-		puts greeting + name
+		puts greeting + @name
 	rescue Exception => e
 		puts e.details
 		puts e.inspect_variables
@@ -34,11 +34,11 @@ Features/benefits:
 	e.details ->
 
 		Exception:
-			can't convert nil into String
+			TypeError: can't convert nil into String
 		Variables:
-			<String> greeting = "hello"
-			<TypeError> e = #<TypeError: can't convert nil into String>
-			<NilClass> @name = nil
+			<String> greeting                   = "hello"
+			<NilClass> @name                    = nil
+
 		Backtrace:
 			/Users/someguy/apps/exception_details/spec/exception_details_spec.rb:20:in `+'
 		/Users/someguy/apps/exception_details/spec/exception_details_spec.rb:20:in `block (3 levels) in <top (required)>'

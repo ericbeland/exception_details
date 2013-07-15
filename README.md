@@ -6,13 +6,13 @@ from the time of the Exception and adds an informative log string.
 
 Features/benefits:
 
-	* Get detail (variables/values) about your Exception circumstances *without* reproducing the problem first.
+	* Get detail (variables/values) about your Exception circumstances *without* reproducing the problem.
 
 	* Reduced need for debug/logging code to find out what went wrong.
 
 	* Minimize ambiguous errors (which variable was nil?).
 
-	* A single statement method for a loggable string (avoid repeating exception log string creation)
+	* A single method for a loggable string (avoid repeating exception log string creation)
 
 	* Get Pry like debug knowledge from cron job errors and running systems from the log, without being there.
 
@@ -79,6 +79,9 @@ jruby, so feel free to try it out.
 - Getting a binding from a NameError seems to be problematic.
 
 - This gem is still new...
+
+- binding of caller is experiencing some segfault issues on some rubies, so this is not
+  ideal for a production stack...  Shame, as how awesome would using this in production be?
 
 ## Contributing
 

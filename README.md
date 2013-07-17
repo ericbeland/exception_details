@@ -78,7 +78,7 @@ Require it:
 	require 'exception_details'
 
 ## Limitations
-- This gem requires [binding\_of\_caller]:https://github.com/banister/binding_of_caller, so it should only work with MRI 1.9.2, 1.9.3, 2.0
+- This gem requires [binding\_of\_caller](https://github.com/banister/binding_of_caller), so it should only work with MRI 1.9.2, 1.9.3, 2.0
 and RBX (Rubinius). Does not work in 1.8.7, but there is a well known (continuation-based)
 hack to get a Binding#of_caller there. There is some mention about binding of caller supporting
 jruby, so feel free to try it out.
@@ -87,7 +87,7 @@ jruby, so feel free to try it out.
 
 - This gem is still new...
 
-- binding of caller is experiencing some segfault issues on some rubies, so this is not
+- binding_of_caller is experiencing some segfault issues on some rubies, so this is not
   ideal for a production stack...  Shame, as how awesome would using this in production be?
 
 ## Contributing

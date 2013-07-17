@@ -5,6 +5,26 @@ class Exception
 	include ExceptionDetails::InspectVariables
 	include ExceptionDetails::LogColorHelpers
 
+
+	 @@filter_variables = []
+
+	 # Configure an array of variable names to obscure during variable inspection.
+	 # variables may be either symbols, or strings.
+	 # This provides a way to make sure your logs don't have usernames,
+	 # passwords, or private keys. Also, beware of hashes containing
+	 # keys you want obscured.
+
+	 # Filtered items will show up with variable values like '**FILTERED**'
+
+	 def self.filter_variables=(variable_names_to_filter)
+	 	variable_names_to_filter = variable_names_to_filter.map {|v| v.to_s}
+	 	@@filter_variables = variable_names_to_filter
+	 end
+
+	 def self.filter_variables
+	 	@@filter_variables
+	 end
+
 	# binding_during_exception lets you actually directly access
 	# the exception-time binding.
 	attr_accessor :binding_during_exception

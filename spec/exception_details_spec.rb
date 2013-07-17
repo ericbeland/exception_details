@@ -106,4 +106,52 @@ describe "ExceptionDetails" do
 
   end
 
+  context "variable value filtering" do
+    before :each do
+      Exception.filter_variables = [:hideme]
+    end
+
+    it "should let you configure filter variables on the Exception class" do
+      Exception.respond_to?(:filter_variables).should be_true
+      StandardError.respond_to?(:filter_variables).should be_true
+   end
+
+    it "should convert filter_variable names to strings on assignment" do
+      Exception.filter_variables = [:foo]
+      Exception.filter_variables.should == ['foo']
+    end
+
+    it "should share all assigned filtering across all exception classes" do
+      Exception.filter_variables = [:hello]
+      (Exception.filter_variables == ['hello']).should be_true
+      (Exception.filter_variables == StandardError.filter_variables).should be_true
+    end
+
+    it "should filter selected variable values" do
+      hideme = 'shouldntseeme'
+      showme = 'shouldseeme'
+      begin
+        raise "hell"
+      rescue Exception => e
+        #variable name still shows up
+        e.inspect_variables.include?('hideme').should be_true
+
+        # but not the value
+        e.inspect_variables.include?('shouldntseeme').should be_false
+        e.inspect_variables.include?('**FILTERED**').should be_true
+      end
+    end
+
+    it "should not filter other variables" do
+      hideme = 'shouldntseeme'
+      showme = 'shouldseeme'
+      begin
+        raise "hell"
+      rescue Exception => e
+        e.inspect_variables.include?('shouldseeme').should be_true
+      end
+    end
+
+  end
+
 end

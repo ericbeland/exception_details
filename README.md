@@ -14,9 +14,9 @@ Features/benefits:
 
 	* A single method for a loggable string (avoid repeating exception log string creation)
 
-	* Get Pry like debug knowledge from cron job errors and running systems from the log, without being there.
+	* Log Pry-like debug info from cron errors and running systems without being there.
 
-	* Pry type information with less overhead/dependencies--binding_of_caller is the only dependency.
+	* Debug information with less overhead/dependencies--binding_of_caller is the only dependency.
 
 
 ## Example Usage
@@ -29,7 +29,6 @@ Features/benefits:
 		puts e.details
 		puts e.inspect_variables
 	end
-
 
 	e.details ->
 
@@ -55,6 +54,14 @@ Features/benefits:
 Or access the variables in the binding yourself...
 
 	e.binding_during_exception.eval("puts #{greeting}")
+
+## Filtering
+
+If you need to hide certain variable values, such as passwords, private keys,
+etc., you can configure an array of variable names to be filtered. Symbols
+or strings may be used. The filter settings are global across all exceptions.
+
+	Exception.filter_variables = [:password, :username, :enjoys_php]
 
 ## Installation
 

@@ -22,7 +22,8 @@ module ExceptionDetails
 					if self.class.filter_variables.include?(vname.to_s)
 						value = '**FILTERED**'
 					end
-						variable_value_string = "\t" + sprintf("%-35s = %s", "<#{value.class}> #{vname}", value.inspect)
+					
+					variable_value_string = "\t" + sprintf("%-35s = %s", "<#{value.class}> #{vname}", value.inspect)
 
 					unless value == self # don't list the exception itself ...
 						variable_strings << variable_value_string

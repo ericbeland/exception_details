@@ -6,7 +6,7 @@ from the time of the Exception and adds an informative log string.
 
 Features/benefits:
 
-	* Get detail (variables/values) about your Exception circumstances *without* reproducing the problem.
+	* Get detail (variables/values) about your Exception circumstances **without** reproducing it.
 
 	* Reduced need for debug/logging code to find out what went wrong.
 
@@ -16,14 +16,15 @@ Features/benefits:
 
 	* Log Pry-like debug info from cron errors and running systems without being there.
 
-	* Debug information with less overhead/dependencies--binding_of_caller is the only dependency.
+	* Debug information with less fewer dependencies--binding_of_caller is the only dependency.
 
 
 ## Example Usage
 
+	greeting = 'hello'
+	@name = nil
+
 	begin
-		greeting = 'hello'
-		@name = nil
 		puts greeting + @name
 	rescue Exception => e
 		puts e.details
@@ -39,9 +40,9 @@ Features/benefits:
 			<NilClass> @name                    = nil
 
 		Backtrace:
-			/Users/someguy/apps/exception_details/spec/exception_details_spec.rb:20:in `+'
-		/Users/someguy/apps/exception_details/spec/exception_details_spec.rb:20:in `block (3 levels) in <top (required)>'
-		/Users/someguy/.rvm/gems/ruby-1.9.3-p374/gems/rspec-core-2.14.3/lib/rspec/core/example.rb:114:in `instance_eval'
+			/Users/me/apps/exception_details/spec/exception_details_spec.rb:20:in `+'
+		/Users/me/apps/exception_details/spec/exception_details_spec.rb:20:in `block (3 levels) in <top (required)>'
+		/Users/me/.rvm/gems/ruby-1.9.3-p374/gems/rspec-core-2.14.3/lib/rspec/core/example.rb:114:in `instance_eval'
 		and so forth ...
 
 
@@ -83,11 +84,11 @@ and RBX (Rubinius). Does not work in 1.8.7, but there is a well known (continuat
 hack to get a Binding#of_caller there. There is some mention about binding of caller supporting
 jruby, so feel free to try it out.
 
-- Getting a binding from a NameError seems to be problematic.
+* Getting a binding from a NameError seems to be problematic.
 
-- This gem is still new...
+* This gem is still new...
 
-- binding_of_caller is experiencing some segfault issues on some rubies, so this is not
+* binding_of_caller is experiencing some segfault issues on some rubies, so this is not
   ideal for a production stack...  Shame, as how awesome would using this in production be?
 
 ## Contributing
